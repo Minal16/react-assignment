@@ -27,3 +27,9 @@ We will see :)
 ### Extra
 
 [My a-ha moments](./AHA.md) in javascript programming.
+
+### Have a nice day!
+
+David Cizek
+github: [@dacz](https://github.com/dacz)
+contact on twitter: [@dadc](https://twitter.com/dadc)

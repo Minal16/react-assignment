@@ -1,6 +1,9 @@
 # test task - clients list
 
-by David Cizek, david@origamica.com
+David Cizek
+github: [@dacz](https://github.com/dacz)
+contact on twitter: [@dadc](https://twitter.com/dadc)
+
 
 
 ## Solution
@@ -129,5 +132,6 @@ Building and testing - depends on the delivery process (part of bigger app and s
 
 Do you like the way I'm working? I'm available for hire.
 
-David C.
-david@origamica.com
+David Cizek
+github: [@dacz](https://github.com/dacz)
+contact on twitter: [@dadc](https://twitter.com/dadc)
