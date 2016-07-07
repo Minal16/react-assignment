@@ -4,11 +4,11 @@
   "description": "test assignment. not universal",
   "main": "dist/index.html",
   "scripts": {
-    "start": "webpack-dev-server --inline --content-base public --history-api-fallback",
+    "dev": "node server/webpack-dev-server",
     "clean": "rm -rf public && mkdir public",
-    "build:client": "webpack -p",
+    "build:client": "webpack --config webpack/webpack.prod.config.js -p",
     "build": "NODE_ENV=production npm run clean && npm run build:client",
-    "server": "node server/dist/server.js",
+    "start": "node server/server.js",
     "test": "npm run testwatch",
     "testwatch": "NODE_ENV=test ava --watch -v"
   },
