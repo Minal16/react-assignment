@@ -4,13 +4,17 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HTMLWebpackPlugin = require("html-webpack-plugin");
 
+var publicBasePath = 'public';
+
 var config = {
+  publicBasePath: publicBasePath,
+
   entry: [
     path.resolve("src/index.js"),
   ],
 
   output: {
-    path: path.resolve("public"),
+    path: path.resolve(publicBasePath),
     publicPath: "/",
     filename: "bundle.js",
   },
