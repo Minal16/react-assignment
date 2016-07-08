@@ -5,7 +5,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var HTMLWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: path.resolve(__dirname, 'client/index.html'),
+  template: path.resolve(__dirname, 'src/index.html'),
   filename: 'index.html',
   inject: 'body'
 });
@@ -22,7 +22,6 @@ if ( process.env.NODE_ENV === 'production' ) {
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        // This has effect on the react lib size
         'NODE_ENV': JSON.stringify('production'),
       }
     }),
@@ -51,7 +50,7 @@ module.exports = {
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, 'client'),
+          path.resolve(__dirname, 'src'),
         ],
         exclude: [
           /node_modules/,

@@ -1,7 +1,7 @@
 import test from 'ava';
 import deepFreeze from 'deep-freeze';
-import clients from '../client/reducers/filter';
-import { SET_FILTER } from '../client/actions/actions-constants';
+import clients from '../src/reducers/filter';
+import { SET_FILTER } from '../src/actions/actions-constants';
 
 test('initial state', t => {
   const newState = clients(undefined, undefined);

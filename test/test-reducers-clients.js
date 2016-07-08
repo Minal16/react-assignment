@@ -1,13 +1,13 @@
 import test from 'ava';
 import deepFreeze from 'deep-freeze';
-import clients from '../client/reducers/clients';
+import clients from '../src/reducers/clients';
 import {
   RECEIVED_INITIAL_CLIENTS_DATA,
   CLIENTS_DATA_LOADING,
-} from '../client/actions/actions-constants';
+} from '../src/actions/actions-constants';
 import {
   IS_LOADING,
-} from '../client/utils/constants';
+} from '../src/utils/constants';
 
 test.beforeEach(t => {
   t.context.action = {
