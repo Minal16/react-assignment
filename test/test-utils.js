@@ -1,6 +1,6 @@
 import test from 'ava';
 import deepFreeze from 'deep-freeze';
-import { findInObj } from '../client/utils';
+import { findInObj } from '../src/utils';
 
 test('findInObj - plain object', t => {
   const obj = {

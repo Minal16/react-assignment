@@ -1,12 +1,12 @@
 import test from 'ava';
 import deepFreeze from 'deep-freeze';
-import * as actions from '../client/actions';
+import * as actions from '../src/actions';
 import {
   RECEIVED_INITIAL_CLIENTS_DATA,
   SET_FILTER,
   SELECT_CLIENT,
   CLIENTS_DATA_LOADING,
-} from '../client/actions/actions-constants';
+} from '../src/actions/actions-constants';
 
 test('receivedInitialClientsData', t => {
   const json = [ { key: 'val' }, { key: 'val1' } ];
