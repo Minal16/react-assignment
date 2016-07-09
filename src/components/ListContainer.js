@@ -1,6 +1,6 @@
 import React, { PropTypes, Component } from 'react';
 import actionToStream from '../rx/actionToStream';
-import { connectWithState } from '../rx/connectWithState';
+import connectWithState from '../rx/connectWithState';
 import actions from '../actions';
 import { findInObj } from '../utils';
 import { IS_LOADING } from '../utils/constants';

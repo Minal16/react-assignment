@@ -36,6 +36,10 @@ const reducer$ = Rx.Observable.merge(
       }
       return state;
     }
+  ),
+
+  actions.fetchClients$.map((id = '') =>
+    state => ({ ...state, selectedClient: id.toString() })
   )
 
 );

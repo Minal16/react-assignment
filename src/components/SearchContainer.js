@@ -1,4 +1,4 @@
-import { connectWithState } from '../rx/connectWithState';
+import connectWithState from '../rx/connectWithState';
 import actions from '../actions';
 import actionToStream from '../rx/actionToStream';
 import Search from './Search';
