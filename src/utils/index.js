@@ -12,3 +12,5 @@ export const findInObj = (obj, val) => {
     return obj[item].match(re);
   }).length;
 };
+
+export const slug = (str) => str.replace(/\s/g, '-').toLowerCase();
