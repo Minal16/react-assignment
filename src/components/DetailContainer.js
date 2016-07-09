@@ -1,14 +1,12 @@
-import { connect } from 'react-redux';
+import { connectWithState } from '../rx/connectWithState';
 import Detail from './Detail';
 
 const findClient = (id, clientsData) => clientsData.filter(client => (client._id === id))[0];
 
-const mapStateToProps = (state) => ({
+const selector = (state) => ({
   clientData: findClient(state.selectedClient, state.clients.data),
 });
 
-const DetailContainer = connect(
-  mapStateToProps
-)(Detail);
+const DetailContainer = connectWithState(selector)(Detail);
 
 export default DetailContainer;

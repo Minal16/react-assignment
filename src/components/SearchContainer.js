@@ -1,18 +1,13 @@
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { setFilter } from '../actions';
+import { connectWithState } from '../rx/connectWithState';
+import actions from '../actions';
+import actionToStream from '../rx/actionToStream';
 import Search from './Search';
 
-const mapStateToProps = (state) => ({
-  filter: state.filter,
+const selector = (state) => ({
+  filter:    state.filter,
+  setFilter: actionToStream(actions.setFilter$),
 });
-const mapDispatechToProps = (dispatch) => (
-  bindActionCreators({ setFilter }, dispatch)
-);
 
-const SearchContainer = connect(
-  mapStateToProps,
-  mapDispatechToProps
-)(Search);
+const SearchContainer = connectWithState(selector)(Search);
 
 export default SearchContainer;

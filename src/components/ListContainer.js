@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { fetchClients, selectClient } from '../actions';
+import actionToStream from '../rx/actionToStream';
+import { connectWithState } from '../rx/connectWithState';
+import actions from '../actions';
 import { findInObj } from '../utils';
 import { IS_LOADING } from '../utils/constants';
 import List from './List';
@@ -87,18 +87,14 @@ class ListComponent extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const selector = (state) => ({
   clients:        state.clients,
   selectedClient: state.selectedClient,
   filter:         state.filter,
+  fetchClients:   actionToStream(actions.fetchClients$),
+  selectClient:   actionToStream(actions.selectClient$),
 });
-const mapDispatchToProps = (dispatch) => (
-  bindActionCreators({ fetchClients, selectClient }, dispatch)
-);
 
-const ListContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ListComponent);
+const ListContainer = connectWithState(selector)(ListComponent);
 
 export default ListContainer;
