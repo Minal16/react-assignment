@@ -1,4 +1,4 @@
-# test task - clients list
+# test task - clients list - Redux way
 
 David Cizek
 github: [@dacz](https://github.com/dacz)
@@ -9,6 +9,9 @@ contact on twitter: [@dadc](https://twitter.com/dadc)
 ## Solution
 
 **React/redux** based solution, testing with [ava](https://github.com/avajs/ava). Router (and location manipulation) was not used - not required to have links to views.
+
+*Note/new: RxJS version has it's own branch and [solution readme](./solution-rxjs.md).*
+
 
 **Building:** [webpack](https://webpack.github.io/).
 
@@ -128,7 +131,20 @@ Suppose that designer is hired to style the app, so probably the styling will be
 Building and testing - depends on the delivery process (part of bigger app and separate build process, CI etc.).
 
 
-### Contact ###
+## Update
+
+in my free time I'm enhancing the repo.
+
+I do not record time since the initial commit. I'm learning along the way a lot and how should I proper log the time?
+
+Recent updates:
+
+* better structure of webpack config
+
+**Branch using RxJS is available**
+
+
+### Contact
 
 Do you like the way I'm working? I'm available for hire.
 
