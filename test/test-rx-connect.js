@@ -11,7 +11,7 @@ global.window = doc.defaultView;
 
 const MyComponent = (props) => <div className="myDiv">{ props.value ? props.value : '' }</div>; //eslint-disable-line
 
-test.only('creates state', t => {
+test('creates state', t => {
   const state$ = new Rx.Subject();
   const WrappedComponent = connect(state$)(MyComponent);
   const renderedComponent = mount(<WrappedComponent />);
@@ -21,7 +21,7 @@ test.only('creates state', t => {
   t.is(renderedComponent.text(), nextState.value);
 });
 
-test.only('creates state with selector', t => {
+test('creates state with selector', t => {
   const state$ = new Rx.Subject();
   const selector = state => ({ value: (state.value || 0) * 2 });
   const WrappedComponent = connect(state$, selector)(MyComponent);

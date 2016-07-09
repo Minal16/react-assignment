@@ -1,11 +1,13 @@
-import Rx from "rxjs";
-import createState from "app/rx-state/createState";
-import CounterReducer$ from "app/reducers/CounterReducer";
+import Rx from 'rxjs';
+import createState from './createState';
+import reducer$ from '../reducers';
 
-const reducer$ = Rx.Observable.merge(
-  CounterReducer$
-);
+// do you have more reducers?
+// const reducer$ = Rx.Observable.merge(
+//   CounterReducer$
+// );
 
-const initialState$ = Rx.Observable.of({ counter: 0 });
+// if you need hydrate state with initial data
+const initialState$ = Rx.Observable.of({});
 
 export default createState(reducer$, initialState$);
