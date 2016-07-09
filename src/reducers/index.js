@@ -3,7 +3,7 @@ import actions from '../actions';
 import {
   IS_LOADING,
 } from '../utils/constants';
-import { slug } from '../utils';
+import { slugMe } from '../utils';
 
 
 const reducer$ = Rx.Observable.merge(
@@ -29,7 +29,7 @@ const reducer$ = Rx.Observable.merge(
         const newState = {};
         newState.data = data.map(i => Object.assign({}, i));
         newState.data.map((item, index) => {
-          item._id = slug(`${index} ${item.general.firstName} ${item.general.lastName}`);
+          item._id = slugMe(`${index} ${item.general.firstName} ${item.general.lastName}`);
           return item;
         });
         return { ...state, clients: { ...newState, status: undefined, ts } };

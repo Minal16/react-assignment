@@ -1,6 +1,6 @@
 import test from 'ava';
 import deepFreeze from 'deep-freeze';
-import { findInObj, slug } from '../src/utils';
+import { findInObj, slugMe } from '../src/utils';
 
 test('findInObj - plain object', t => {
   const obj = {
@@ -30,8 +30,8 @@ test('findInObj - nested object', t => {
 
 // ---
 
-test('slug', t => {
+test('slugMe', t => {
   const txtIn = 'hello Some TEXT here';
   const txtWant = 'hello-some-text-here';
-  t.is(slug(txtIn), txtWant);
+  t.is(slugMe(txtIn), txtWant);
 });

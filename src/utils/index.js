@@ -1,9 +1,9 @@
-// filters objects values
 
-// export const findInObj = (obj, val) => {
-//   const re = new RegExp(val, 'i');
-//   return !!Object.keys(obj).filter(item => obj[item].match(re)).length;
-// };
+import slug from 'slug';
+slug.defaults.mode = 'pretty';
+slug.defaults.modes.pretty.lower = true;
+
+export const slugMe = (val) => slug(val);
 
 export const findInObj = (obj, val) => {
   const re = new RegExp(val, 'i');
@@ -13,4 +13,5 @@ export const findInObj = (obj, val) => {
   }).length;
 };
 
-export const slug = (str) => str.replace(/\s/g, '-').toLowerCase();
+
+// export const slug = (str) => str.replace(/\s/g, '-').toLowerCase();
