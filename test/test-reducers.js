@@ -79,6 +79,7 @@ test('receivedClientsData$', t => {
   reducer$.subscribe(fn => {
     const clientsState = fn(initialState).clients;
     t.is(clientsState.data.length, clients.length);
+    t.truthy(clientsState.data[0]._id);
     t.is(clientsState.ts, ts);
     t.is(clientsState.status, undefined);
     t.is(clientsState.error, undefined);
