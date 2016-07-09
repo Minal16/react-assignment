@@ -9,7 +9,6 @@ const connectWithState = (selector = (state) => state) => (WrappedComponent) =>
 
       constructor(props, context) {
         super(props, context);
-        // console.log('CONTEXT: ', context);
         this.state$ = context.state$;
       }
 
