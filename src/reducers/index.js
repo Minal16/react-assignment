@@ -1,14 +1,20 @@
 import Rx from 'rxjs';
+import fetch from 'isomorphic-fetch';
 import actions from '../actions';
 import {
   IS_LOADING,
+  CLIENTS_DATA_URL,
 } from '../utils/constants';
-import { slugMe } from '../utils';
+import { slugMe, clientsDataModify } from '../utils';
+import dataStreamGenerator from '../utils/dataStreamGenerator';
 
+// const clientsDataModify = (state, data, error, ts) => (
 
 const reducer$ = Rx.Observable.merge(
-  actions.clientsDataLoading$.map((ts) =>
-    state => ({ ...state, clients: { ...state.clients, status: IS_LOADING, ts } })
+  actions.clientsDataLoading$.map((ts) => {
+    console.log('CLIENTSDTALOADING');
+    return state => ({ ...state, clients: { ...state.clients, status: IS_LOADING, ts } });
+  }
   ),
 
   actions.setFilter$.map((val = '') =>
@@ -21,6 +27,7 @@ const reducer$ = Rx.Observable.merge(
 
   actions.receivedClientsData$.map(({ data, error, ts }) =>
     state => {
+      console.log('RECEIVED CLIENTS DATA: ', data);
       if (error) {
         const err = typeof error === 'object' ? error.message : error;
         return { ...state, clients: { ...state.clients, status: err, ts } };
@@ -38,9 +45,25 @@ const reducer$ = Rx.Observable.merge(
     }
   ),
 
-  actions.fetchClients$.map((id = '') =>
-    state => ({ ...state, selectedClient: id.toString() })
-  )
+  actions.fetchClients$.map((url = CLIENTS_DATA_URL) => {
+    const ts = Date.now();
+    console.log('FETCH CLIENTS with: ', url);
+    // notify about the loading
+    actions.clientsDataLoading$.next(ts);
+    // return (state) => state;
+
+    return dataStreamGenerator(url)
+    // console.log('DS: ', rv);
+    .map(val => {
+      console.log('GOT DATA IN REDUCER');
+      const error = (val instanceof Error) ? val.message : undefined;
+      const data = error ? undefined : val;
+      actions.receivedClientsData$({ data, error, ts });
+      // return val;
+      return (state) => state;
+    });
+    // return (state) => state;
+  })
 
 );
 

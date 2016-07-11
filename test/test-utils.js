@@ -1,6 +1,7 @@
 import test from 'ava';
 import deepFreeze from 'deep-freeze';
 import { findInObj, slugMe } from '../src/utils';
+import { IS_ERROR } from '../src/utils/constants';
 
 test('findInObj - plain object', t => {
   const obj = {
@@ -35,3 +36,42 @@ test('slugMe', t => {
   const txtWant = 'hello-some-text-here';
   t.is(slugMe(txtIn), txtWant);
 });
+
+// ---
+
+// export const clientsDataModify = (state, data, error, ts) => (
+//   {
+//     ...state,
+//     clients: {
+//       ...state.clients,
+//       data,
+//       ts,
+//       status: error ? 'IS_ERROR' : undefined,
+//       error,
+//     },
+//   }
+// );
+
+// test.only('clientsDataModify data', t => {
+//   const state = { filter: 'ahoj' };
+//   const data = [ 1, 2, 3 ];
+//   const ts = Date.now();
+//   const wanna = Object.assign(
+//     {},
+//     state,
+//     { clients: { data, ts, status: undefined, error: undefined } }
+//   );
+//   t.deepEqual(clientsDataModify(state, data, undefined, ts), wanna);
+// });
+//
+// test.only('clientsDataModify data', t => {
+//   const state = { filter: 'ahoj', clients: { data: [ 1, 2, 3 ] } };
+//   const err = 'some error';
+//   const ts = Date.now();
+//   const wanna = Object.assign(
+//     {},
+//     state
+//   );
+//   wanna.clients = { data: state.clients.data, status: IS_ERROR, error: err, ts };
+//   t.deepEqual(clientsDataModify(state, undefined, err, ts), wanna);
+// });

@@ -13,5 +13,18 @@ export const findInObj = (obj, val) => {
   }).length;
 };
 
+// export const clientsDataModify = (state, data, error, ts) => (
+//   {
+//     ...state,
+//     clients: {
+//       ...state.clients,
+//       data:   data || state.clients.data,
+//       ts,
+//       status: error ? 'IS_ERROR' : undefined,
+//       error,
+//     },
+//   }
+// );
+
 
 // export const slug = (str) => str.replace(/\s/g, '-').toLowerCase();

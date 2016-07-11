@@ -88,3 +88,20 @@ test('receivedClientsData$', t => {
   const error = undefined;
   actions.receivedClientsData$.next({ data: clients, error, ts });
 });
+
+// ---- fetchClients$
+
+test.only('fetchClients$', t => {
+  const initialState = {};
+  console.log('HERE');
+  actions.fetchClients$.next('http://jsonplaceholder.typicode.com/users');
+  console.log('HERE2');
+  reducer$.subscribe(val => {
+    console.log('TEST SUBSCRIBE VAL: ', val);
+    t.pass();
+  });
+  console.log('KONEC');
+  // t.pass();
+  actions.fetchClients$.next('http://jsonplaceholder.typicode.com/users');
+  console.log('UPLNY KONEC');
+});
