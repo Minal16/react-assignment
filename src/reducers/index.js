@@ -25,9 +25,9 @@ const reducer$ = Rx.Observable.merge(
     state => ({ ...state, selectedClient: id.toString() })
   ),
 
-  actions.receivedClientsData$.map(({ data, error, ts }) =>
-    state => {
-      console.log('RECEIVED CLIENTS DATA: ', data);
+  actions.receivedClientsData$.map(({ data, error, ts }) => {
+    console.log('RECEIVED CLIENTS DATA: ', data);
+    return state => {
       if (error) {
         const err = typeof error === 'object' ? error.message : error;
         return { ...state, clients: { ...state.clients, status: err, ts } };
@@ -43,28 +43,44 @@ const reducer$ = Rx.Observable.merge(
       }
       return state;
     }
-  ),
+  }),
 
   actions.fetchClients$.map((url = CLIENTS_DATA_URL) => {
     const ts = Date.now();
     console.log('FETCH CLIENTS with: ', url);
     // notify about the loading
     actions.clientsDataLoading$.next(ts);
-    // return (state) => state;
-
-    return dataStreamGenerator(url)
-    // console.log('DS: ', rv);
-    .map(val => {
-      console.log('GOT DATA IN REDUCER');
-      const error = (val instanceof Error) ? val.message : undefined;
-      const data = error ? undefined : val;
-      actions.receivedClientsData$({ data, error, ts });
-      // return val;
-      return (state) => state;
-    });
-    // return (state) => state;
+    return dataStreamGenerator(url);
+  }).map(val => {
+    console.log('GOT DATA IN REDUCER: ', val);
+    const error = (val instanceof Error) ? val.message : undefined;
+    console.log('ERROR: ', error);
+    const data = error ? undefined : val;
+    actions.receivedClientsData$.next({ data, error, ts: Date.now() });
+    // return val;
+    return (state) => state;
   })
-
 );
 
 export default reducer$;
+
+
+// actions.fetchClients$.map((url = CLIENTS_DATA_URL) => {
+//   const ts = Date.now();
+//   console.log('FETCH CLIENTS with: ', url);
+//   // notify about the loading
+//   actions.clientsDataLoading$.next(ts);
+//   // return (state) => state;
+//
+//   return dataStreamGenerator(url)
+//   // console.log('DS: ', rv);
+//   .map(val => {
+//     console.log('GOT DATA IN REDUCER');
+//     const error = (val instanceof Error) ? val.message : undefined;
+//     const data = error ? undefined : val;
+//     actions.receivedClientsData$({ data, error, ts });
+//     // return val;
+//     return (state) => state;
+//   });
+//   // return (state) => state;
+// })

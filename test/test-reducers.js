@@ -1,4 +1,5 @@
 import test from 'ava';
+import Rx from 'rxjs';
 import actions from '../src/actions';
 import reducer$ from '../src/reducers';
 import {
