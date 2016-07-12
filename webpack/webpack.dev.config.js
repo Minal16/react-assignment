@@ -11,37 +11,39 @@ devConfig = {
 
   entry: [
     "webpack-dev-server/client?http://localhost:8080",
-    "webpack/hot/only-dev-server"
+    // "webpack/hot/only-dev-server"
   ].concat(config.entry),
 
   output: extend(config.output, { publicPath: "http://localhost:8080/" }),
 
   resolve: config.resolve,
 
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin(),
-  ].concat(config.plugins),
+  // plugins: [
+  //   new webpack.HotModuleReplacementPlugin(),
+  //   new webpack.NoErrorsPlugin(),
+  // ].concat(config.plugins),
+  plugins: config.plugins,
 
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        include: [
-          path.resolve(__dirname, '../', 'src'),
-        ],
-        exclude: [
-          /node_modules/,
-          path.resolve(__dirname, '..', 'tests'),
-        ],
-        loaders: ['react-hot', 'babel-loader'],
-      },
-      // {
-      //   test: /\.css$/,
-      //   loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&&sourceMap!postcss',
-      // },
-      // { test: /\.css$/, loader: "style!css?module&sourceMap!postcss" },
-    ].concat(config.module.loaders),
+    loaders: config.module.loaders,
+    // loaders: [
+    //   {
+    //     test: /\.js$/,
+    //     include: [
+    //       path.resolve(__dirname, '../', 'src'),
+    //     ],
+    //     exclude: [
+    //       /node_modules/,
+    //       path.resolve(__dirname, '..', 'tests'),
+    //     ],
+    //     loaders: ['react-hot', 'babel-loader'],
+    //   },
+    //   // {
+    //   //   test: /\.css$/,
+    //   //   loader: 'style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&&sourceMap!postcss',
+    //   // },
+    //   // { test: /\.css$/, loader: "style!css?module&sourceMap!postcss" },
+    // ].concat(config.module.loaders),
   },
 
   postcss: function (webpack) {
