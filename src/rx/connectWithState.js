@@ -10,10 +10,20 @@ const connectWithState = (selector = (state) => state) => (WrappedComponent) =>
       constructor(props, context) {
         super(props, context);
         this.state$ = context.state$;
+        // console.log('state from context: ', context.state$);
+        // console.log('statestate: ', this.state$);
       }
 
       componentWillMount() {
-        this.subscription = this.state$.map(selector).subscribe(::this.setState);
+        // console.log('willmount: ', this.state$);
+        // console.log('SELECTOR: ', selector);
+        // this.subscription = this.state$.map(selector).subscribe(::this.setState);
+        this.subscription = this.state$.map(selector).subscribe( // TODO: maybe add distinct?
+          (data) => this.setState(data),
+          (err) => console.error('ERR: ', err)
+        );
+        // this.setState('ahoj');
+        // console.log('STATE IN WRAPPER: ', this.state);
       }
 
       componentWillUnmount() {

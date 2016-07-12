@@ -12,4 +12,5 @@ import state$ from './rx/state';
 render(
   <Provider state$={ state$ }>
     <App />
-  </Provider>, document.getElementById('index'));
+  </Provider>, document.getElementById('index')
+);

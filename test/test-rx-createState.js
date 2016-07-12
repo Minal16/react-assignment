@@ -6,7 +6,7 @@ import createState from '../src/rx/createState';
 test('creates state', t => {
   const reducer = state => ({ ...state, reducerCalled: (state.reducerCalled || 0) + 1 });
   const reducer$ = new Rx.Subject();
-  const state$ = createState(reducer$);
+  const state$ = createState(reducer$, Rx.Observable.of({}));
   const valWanted = [
     {}, // because it has PublishReplay and therefore gives initial value first
     { reducerCalled: 1 },

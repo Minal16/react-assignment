@@ -1,6 +1,7 @@
-import Rx from 'rxjs';
+// import Rx from 'rxjs';
+import initialStateDefault$ from './initialStateDefault';
 
-const createState = (reducer$, initialState$ = Rx.Observable.of({})) =>
+const createState = (reducer$, initialState$ = initialStateDefault$) =>
   initialState$
     .merge(reducer$)
     .scan((state, reducer) => reducer(state))
