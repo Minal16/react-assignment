@@ -9,10 +9,9 @@ import initialStateDefault$ from './initialStateDefault';
 // );
 
 // if you need hydrate state with initial data
-// const initialState$ = Rx.Observable.of({});
 // const initialState$ = Rx.Observable.of(
 //   {
-//     clients:        { data: [], ts: 0, status: undefined },
+//     clients:        { data: [YOUR DATA], ts: 0, status: undefined },
 //     filter:         '',
 //     selectedClient: '',
 //   }

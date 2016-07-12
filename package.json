@@ -58,7 +58,7 @@
     "html-webpack-plugin": "^2.15.0",
     "ignore-styles": "^4.0.0",
     "jsdom": "^9.4.1",
-    "postcss": "^5.0.21",
+    "postcss": "^5.1.0",
     "postcss-browser-reporter": "^0.5.0",
     "postcss-cssnext": "^2.7.0",
     "postcss-import": "^8.1.2",
