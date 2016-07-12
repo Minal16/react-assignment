@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import deepEqual from 'deep-equal';
 
 const connectWithState = (selector = (state) => state) => (WrappedComponent) =>
     class ConnectWithState extends React.Component {
@@ -13,8 +14,10 @@ const connectWithState = (selector = (state) => state) => (WrappedComponent) =>
       }
 
       componentWillMount() {
-        this.subscription = this.state$.map(selector).subscribe(::this.setState);
-        // TODO: maybe add distinctWIthLatest?
+        this.subscription = this.state$
+        .map(selector)
+        .distinctUntilChanged((a, b) => deepEqual(a, b))
+        .subscribe(::this.setState);
       }
 
       componentWillUnmount() {

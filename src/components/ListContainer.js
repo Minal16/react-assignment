@@ -29,7 +29,6 @@ class ListComponent extends Component {
   // that uses them. Again, better to use this app inside bigger one.
   componentWillMount() {
     this.props.fetchClients();
-    console.log(this.props);
     this.listToDisplay = this.filterList(
       this.props.clients.data,
       this.props.filter,
@@ -38,7 +37,6 @@ class ListComponent extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
     this.listToDisplay = this.filterList(
       nextProps.clients.data,
       nextProps.filter,
