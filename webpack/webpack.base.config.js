@@ -52,13 +52,6 @@ var config = {
         ],
         loader: "babel-loader",
       },
-    // ],
-    //
-    // loaders: [
-      // {
-      //   test: /\.css$/,
-      //   loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize!postcss-loader')
-      // },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize!postcss')
