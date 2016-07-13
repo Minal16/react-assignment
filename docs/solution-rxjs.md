@@ -26,7 +26,7 @@ Open http://localhost:8080.
 
 [ToDo]
 
-Generally I'm fan of RxJS and reactive/functional programming. I'm newbie yet.
+Generally I'm fan of RxJS and reactive/functional programming.
 
 The solution heavily borrows from [amazing article of Michal Zalecki](http://michalzalecki.com/use-rxjs-with-react/). Read it. I had to read it many times to get into the differences between redux and RxJS solution (and get better understanding of RxJS).
 
