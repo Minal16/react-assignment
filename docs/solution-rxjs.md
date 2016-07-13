@@ -65,7 +65,12 @@ See the Redux solution.
 
 I'm not recording the time on RxJS. For me it is a lot about learning.
 
-Generally (rewriting the redux to RxJS) took me approx. 4 hours but with a lot of playing with RxJS primitives and additional time to learn more about RxJS. But, you know, I'm getting better :)
+Generally (rewriting the redux to RxJS) took me approx. 2 hours but I do not count in the time playing with RxJS primitives and additional time to learn more about RxJS.
+
+
+## Build size
+
+When built with webpack prod setting, it's 216kB gzipped (bundle.js). I did not optimized RxJS importing, yet (import only what I use) or checked webpack 2 with tree shaking optimization.
 
 
 ### Contact
