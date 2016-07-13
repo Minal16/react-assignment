@@ -22,7 +22,7 @@ var config = {
   resolve: {
     extensions: ["", ".js"],
     alias: {
-      "app": path.resolve("src"),
+      "app": path.resolve(__dirname, '../src'),
     }
   },
 
@@ -39,13 +39,22 @@ var config = {
 
   module: {
     loaders: [
-      { test: /\.jsx?$/, exclude: /node_modules/, loader: "babel" },
-    ],
-
-    loaders: [
+      // { test: /\.jsx?$/, include: [path.resolve(__dirname, 'src')], exclude: /node_modules/, loader: "babel" },
+      { test: /\.json$/, loader: "json-loader" },
+      {
+        test: /\.js$/,
+        include: [
+          path.resolve(__dirname, '../src'),
+        ],
+        exclude: [
+          path.resolve(__dirname, '../node_modules/'),
+          path.resolve(__dirname, '../tests'),
+        ],
+        loader: "babel-loader",
+      },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize!postcss-loader')
+        loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize!postcss')
       },
       {
         test: /\.svg$/,

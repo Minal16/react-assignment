@@ -4,7 +4,8 @@ var config           = require("../webpack/webpack.dev.config");
 console.log(config);
 
 var webpackDevServer = new WebpackDevServer(webpack(config), {
-  hot: true,
+  // hot: true,
+  inline: true,
   historyApiFallback: true,
   stats: { colors: true },
 });

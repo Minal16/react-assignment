@@ -1,8 +1,9 @@
-var config            = require("./webpack.config.js");
+var webpack           = require("webpack");
+var config            = require("./webpack.base.config.js");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 var prodConfig = {
-  devtool: "source-map",
+  devtool: "cheap-module-source-map",
 
   entry: config.entry,
 
@@ -10,7 +11,7 @@ var prodConfig = {
 
   output: config.output,
 
-  plugins: [
+  plugins: config.plugins.concat([
     // new ExtractTextPlugin("styles.css"),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -20,34 +21,20 @@ var prodConfig = {
       }
     }),
     new webpack.optimize.UglifyJsPlugin()
-  ].concat(config.plugins),
+  ]),
 
   module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        include: [
-          path.resolve(__dirname, 'src'),
-        ],
-        exclude: [
-          /node_modules/,
-          path.resolve(__dirname, 'tests'),
-        ],
-        loader: "babel-loader",
-      },
-      // {
-      //   test: /\.css$/,
-      //   loader: ExtractTextPlugin.extract('style-loader', 'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]&minimize!postcss-loader')
-      // },
-    ].concat(config.module.loaders),
+    loaders: config.module.loaders,
   },
-
-  // postcss: config.postcss,
 
   postcss: function (webpack) {
     return config.postcssPlugins;
   }
 
 };
+
+console.log('============');
+console.log(JSON.stringify(prodConfig, null, 2));
+console.log('============');
 
 module.exports = prodConfig;
