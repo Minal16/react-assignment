@@ -1,5 +1,7 @@
 # React test assignment - contact list
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dacz/react-assignment.svg)](https://greenkeeper.io/)
+
 Test assignments are common way how to test skills of potential candidates.
 
 But they are very good to sharpen your programming skills, too. You take extra care about the code, comments and description and that teaches you in good habits. After all this is what you want eventually - to write nice, self-described, readable and maintainable code.
